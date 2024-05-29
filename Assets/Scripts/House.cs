@@ -38,6 +38,83 @@ public class House : MonoBehaviour
             temp.GetComponent<HandleOffense>().money = 10;
             temp.SetActive(true);
         }
+        if (leaves)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Fallen Leaves";
+            temp.GetComponent<HandleOffense>().money = 20;
+            temp.SetActive(true);
+        }
+        if (sideLeaves)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (leaves)";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
+        }
+        if (sideCans)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (trash)";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
+        }
+        if (trashCans)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash Cans";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
+        }
+        if (largePlant)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Large Plant";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
+        }
+        if (paintColor)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
+        }
+        if (furniture)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Unauthorized Furniture";
+            temp.GetComponent<HandleOffense>().money = 50;
+            temp.SetActive(true);
+        }
+        if (decorations)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Out of Season Decorations";
+            temp.GetComponent<HandleOffense>().money = 60;
+            temp.SetActive(true);
+        }
+        if (driveway)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Driveway";
+            temp.GetComponent<HandleOffense>().money = 50;
+            temp.SetActive(true);
+        }
+        if (pet)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Pet";
+            temp.GetComponent<HandleOffense>().money = 100;
+            temp.SetActive(true);
+        }
+        if (trash)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash on Ground";
+            temp.GetComponent<HandleOffense>().money = 60;
+            temp.SetActive(true);
+        }
     }
 
 

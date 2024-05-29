@@ -564,12 +564,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: pet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
       propertyPath: grass
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: trash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
       propertyPath: weeds
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: leaves
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: driveway
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: sideCans
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: furniture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: trashCans
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: largePlant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: paintColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: sideLeaves
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628617397591511703, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
+      propertyPath: decorations
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704142785297001963, guid: 99c850183250eca4e9ee13bf205abfe7, type: 3}
       propertyPath: m_AnchorMax.y
