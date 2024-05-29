@@ -4,11 +4,42 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using TMPro;
 
 public class House : MonoBehaviour
 {
     [SerializeField]
     GameObject UI_PopUp;
+    [SerializeField]
+    GameObject Offenses;
+    [SerializeField]
+    GameObject listPrefab;
+
+    [Header("Offenses")]
+    public bool grass;
+    public bool weeds, leaves, sideLeaves, sideCans, trashCans, largePlant, 
+        paintColor, furniture, decorations, driveway, pet, trash;
+
+    void Start()
+    {
+        if(grass)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Grass";
+            temp.GetComponent<HandleOffense>().money = 20;
+            temp.SetActive(true);
+        }
+        if (weeds)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Weeds";
+            temp.GetComponent<HandleOffense>().money = 10;
+            temp.SetActive(true);
+        }
+    }
+
 
     void Update()
     {
