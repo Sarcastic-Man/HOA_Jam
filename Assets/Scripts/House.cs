@@ -20,114 +20,156 @@ public class House : MonoBehaviour
     [Header("Offenses")]
     public bool grass;
     public bool weeds, leaves, sideLeaves, sideCans, trashCans, largePlant, 
-        paintColor, furniture, decorations, driveway, pet, trash;
+        paintColor, furniture, decorations, driveway, pet, trash, canHavePet;
 
-    void Start()
-    {
-        if(grass)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Grass";
-            temp.GetComponent<HandleOffense>().money = 20;
-            temp.SetActive(true);
-        }
-        if (weeds)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Weeds";
-            temp.GetComponent<HandleOffense>().money = 10;
-            temp.SetActive(true);
-        }
-        if (leaves)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Fallen Leaves";
-            temp.GetComponent<HandleOffense>().money = 20;
-            temp.SetActive(true);
-        }
-        if (sideLeaves)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (leaves)";
-            temp.GetComponent<HandleOffense>().money = 30;
-            temp.SetActive(true);
-        }
-        if (sideCans)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (trash)";
-            temp.GetComponent<HandleOffense>().money = 30;
-            temp.SetActive(true);
-        }
-        if (trashCans)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash Cans";
-            temp.GetComponent<HandleOffense>().money = 30;
-            temp.SetActive(true);
-        }
-        if (largePlant)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Large Plant";
-            temp.GetComponent<HandleOffense>().money = 30;
-            temp.SetActive(true);
-        }
-        if (paintColor)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color";
-            temp.GetComponent<HandleOffense>().money = 30;
-            temp.SetActive(true);
-        }
-        if (furniture)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Unauthorized Furniture";
-            temp.GetComponent<HandleOffense>().money = 50;
-            temp.SetActive(true);
-        }
-        if (decorations)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Out of Season Decorations";
-            temp.GetComponent<HandleOffense>().money = 60;
-            temp.SetActive(true);
-        }
-        if (driveway)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Driveway";
-            temp.GetComponent<HandleOffense>().money = 50;
-            temp.SetActive(true);
-        }
-        if (pet)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Pet";
-            temp.GetComponent<HandleOffense>().money = 100;
-            temp.SetActive(true);
-        }
-        if (trash)
-        {
-            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash on Ground";
-            temp.GetComponent<HandleOffense>().money = 60;
-            temp.SetActive(true);
-        }
-    }
+    bool ready = false;
 
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(!ready)
+        {
+            int day = FindAnyObjectByType<UICounters>().day;
+            if (grass)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Grass";
+                temp.GetComponent<HandleOffense>().money = 20;
+                temp.SetActive(true);
+            }
+
+            if (Random.Range(0, 100) % 5 == 0)
+                weeds = true;
+            if (weeds)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Weeds";
+                temp.GetComponent<HandleOffense>().money = 10;
+                temp.SetActive(true);
+            }
+            if (leaves)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Fallen Leaves";
+                temp.GetComponent<HandleOffense>().money = 20;
+                temp.SetActive(true);
+            }
+            if (sideLeaves)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (leaves)";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+
+            if(day % 7 == 4)
+            {
+                if (Random.Range(0, 100) % 2.5 == 0)
+                    sideCans = true;
+            }
+            if (sideCans)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (trash)";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+
+            if (!sideCans)
+            {
+                if (Random.Range(0, 100) % 10 == 0)
+                    trashCans = true;
+            }
+            if (trashCans)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash Cans";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+            if (largePlant)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Large Plant";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+            if (paintColor)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+
+            if (Random.Range(0, 100) % 10 == 0)
+                furniture = true;
+            if (furniture)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Unauthorized Furniture";
+                temp.GetComponent<HandleOffense>().money = 50;
+                temp.SetActive(true);
+            }
+
+            if (Random.Range(0, 100) % 20 == 0)
+                decorations = true;
+            if (decorations)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Out of Season Decorations";
+                temp.GetComponent<HandleOffense>().money = 60;
+                temp.SetActive(true);
+            }
+            if (driveway)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Driveway";
+                temp.GetComponent<HandleOffense>().money = 50;
+                temp.SetActive(true);
+            }
+
+            if(canHavePet)
+            {
+                if (Random.Range(0, 100) % 5 == 0)
+                    decorations = true;
+            }
+            if (pet)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Pet";
+                temp.GetComponent<HandleOffense>().money = 100;
+                temp.SetActive(true);
+            }
+
+            if(day % 7 == 0 || day % 7 == 1)
+            {
+                if (Random.Range(0, 100) % 20 == 0)
+                    trash = true;
+            }
+            else
+            {
+                if (Random.Range(0, 100) % 5 == 0)
+                    trash = true;
+            }
+            if (trash)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Trash on Ground";
+                temp.GetComponent<HandleOffense>().money = 60;
+                temp.SetActive(true);
+            }
+            ready = true;
+        }
+
+        if (Input.GetMouseButtonDown(0) && FindObjectOfType<Player>().canMove)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
 
-            if (hit.collider != null && hit.collider.gameObject.tag == "House")
+            if (hit.collider != null && hit.collider.gameObject.tag == "House" && hit.collider.gameObject.name == gameObject.name)
             {
                 FindObjectOfType<Player>().canMove = false;
                 UI_PopUp.SetActive(true);
