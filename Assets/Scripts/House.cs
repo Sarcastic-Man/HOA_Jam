@@ -19,8 +19,12 @@ public class House : MonoBehaviour
 
     [Header("Offenses")]
     public bool grass;
-    public bool weeds, leaves, sideLeaves, sideCans, trashCans, largePlant, 
-        paintColor, furniture, decorations, driveway, pet, trash, canHavePet;
+    public bool weeds, leaves, sideLeaves, sideCans, trashCans, 
+        furniture, decorations, pet, trash, canHavePet;
+    public bool paint1, paint2, paint3;
+
+    bool grassDone, weedsDone, leavesDone, sideCansDone, trashCansDone, furnitureDone,
+        decorationsDone, petDone, trashDone, paint1Done, paint2Done, paint3Done;
 
     bool ready = false;
 
@@ -47,6 +51,8 @@ public class House : MonoBehaviour
                 temp.GetComponent<HandleOffense>().money = 10;
                 temp.SetActive(true);
             }
+
+
             if (leaves)
             {
                 GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
@@ -87,17 +93,39 @@ public class House : MonoBehaviour
                 temp.GetComponent<HandleOffense>().money = 30;
                 temp.SetActive(true);
             }
-            if (largePlant)
+            /*if (largePlant)
             {
                 GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
                 temp.GetComponentInChildren<TextMeshProUGUI>().text = "Large Plant";
                 temp.GetComponent<HandleOffense>().money = 30;
                 temp.SetActive(true);
-            }
-            if (paintColor)
+            }*/
+
+
+            if (Random.Range(0, 100) % 10 == 0)
+                paint1 = true;
+            if (paint1)
             {
                 GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
-                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color";
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color1";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+            if (Random.Range(0, 100) % 10 == 0)
+                paint2 = true;
+            if (paint2)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color2";
+                temp.GetComponent<HandleOffense>().money = 30;
+                temp.SetActive(true);
+            }
+            if (Random.Range(0, 100) % 10 == 0)
+                paint3 = true;
+            if (paint3)
+            {
+                GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+                temp.GetComponentInChildren<TextMeshProUGUI>().text = "Off Paint Color3";
                 temp.GetComponent<HandleOffense>().money = 30;
                 temp.SetActive(true);
             }
@@ -121,13 +149,13 @@ public class House : MonoBehaviour
                 temp.GetComponent<HandleOffense>().money = 60;
                 temp.SetActive(true);
             }
-            if (driveway)
+            /*if (driveway)
             {
                 GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
                 temp.GetComponentInChildren<TextMeshProUGUI>().text = "Driveway";
                 temp.GetComponent<HandleOffense>().money = 50;
                 temp.SetActive(true);
-            }
+            }*/
 
             if(canHavePet)
             {
@@ -183,6 +211,61 @@ public class House : MonoBehaviour
         {
             col.gameObject.GetComponent<Player>().canMove = false;
             UI_PopUp.SetActive(true);
+        }
+    }
+
+    public void closeWindow()
+    {
+        UI_PopUp.SetActive(false);
+    }
+
+    public void NewDay()
+    {
+        if(weeds)
+        {
+            if(weedsDone)
+            {
+                if (Random.Range(0, 100) % 1.34 == 0)
+                    weeds = false;
+            }
+            else
+            {
+                if (Random.Range(0, 100) % 5 == 0)
+                    weeds = false;
+            }
+        }
+        else
+        {
+            if (Random.Range(0, 100) % 5 == 0)
+                weeds = true;
+        }
+        if (weeds)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Weeds";
+            temp.GetComponent<HandleOffense>().money = 10;
+            temp.SetActive(true);
+        }
+
+        if(sideCans)
+        {
+            if(sideCansDone)
+            {
+                if (Random.Range(0, 100) % 1.11 == 0)
+                    sideCans = false;
+            }
+            else
+            {
+                if (Random.Range(0, 100) % 1.43 == 0)
+                    sideCans = false;
+            }
+        }
+        if (sideLeaves)
+        {
+            GameObject temp = Instantiate(listPrefab, Offenses.transform, false);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = "Sidewalk Blocked (leaves)";
+            temp.GetComponent<HandleOffense>().money = 30;
+            temp.SetActive(true);
         }
     }
 }

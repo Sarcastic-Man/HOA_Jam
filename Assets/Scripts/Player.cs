@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         if (canMove)
         {
             moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
