@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86356c65269e24441b830d0ca9ce5360, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  accessToken: user_at_WL-hcwsWWEJ3IO_4an1Nkw4VEv_qlL3Bs2fGjhGBFfv7ElTN-v_AyFb95ZTHXrzo
+  appIcon: {fileID: 0}
+  appBackground: {fileID: 0}
+  appName: HOA Game
+  appDescription: HYPLAY HOA Game Description
+  appUrl: https://sarcastic-man.github.io/HOA_Jam/
+  currentApp:
+    id: 
+    secretKey: 
+    name: 
+    description: 
+    redirectUris: []
+    url: 
+    iconImageAsset:
+      id: 
+      cdnUrl: 
+    backgroundImageAsset:
+      id: 
+      cdnUrl: 
+  <Token>k__BackingField: 
